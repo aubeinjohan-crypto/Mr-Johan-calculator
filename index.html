@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MR JOHAN Scientific Calculator - A modern calculator for everyday and advanced mathematics.">
+
+    <title>MR JOHAN | Scientific Calculator</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="brand">
+                <div class="brand-icon">J</div>
+
+                <div class="brand-text">
+                    <h1>MR JOHAN</h1>
+                    <p>SCIENTIFIC CALCULATOR</p>
+                </div>
+            </div>
+
+            <div class="header-actions">
+
+                <button
+                    class="icon-btn"
+                    id="historyToggle"
+                    aria-label="Toggle calculation history"
+                    title="History">
+                    ◷
+                </button>
+
+                <button
+                    class="icon-btn"
+                    id="themeToggle"
+                    aria-label="Toggle light and dark theme"
+                    title="Change theme">
+                    ☀
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- CALCULATOR -->
+            <section class="calculator-card">
+
+                <!-- CALCULATOR HEADER -->
+                <div class="calculator-top">
+
+                    <div class="calculator-label">
+                        <span class="status-dot"></span>
+                        <span>SCIENTIFIC MODE</span>
+                    </div>
+
+                    <div class="calculator-options">
+
+                        <button id="angleToggle" class="small-btn">
+                            DEG
+                        </button>
+
+                        <button id="scientificToggle" class="small-btn">
+                            SCI
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CALCULATOR DISPLAY -->
+                <div class="display-container">
+
+                    <div
+                        class="previous-expression"
+                        id="previousExpression">
+                        Ready to calculate
+                    </div>
+
+                    <div class="display-row">
+
+                        <input
+                            type="text"
+                            id="display"
+                            class="display"
+                            value="0"
+                            placeholder="0"
+                            readonly
+                            aria-label="Calculator result">
+
+                        <button
+                            id="copyResult"
+                            class="copy-btn"
+                            title="Copy result"
+                            aria-label="Copy result">
+                            ▢
+                        </button>
+
+                    </div>
+
+                    <div class="display-footer">
+
+                        <span id="memoryIndicator">
+                            MEM: OFF
+                        </span>
+
+                        <span id="calculationStatus">
+                            Ready
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MEMORY BUTTONS -->
+                <div class="memory-buttons">
+
+                    <button data-action="memory-clear">MC</button>
+                    <button data-action="memory-recall">MR</button>
+                    <button data-action="memory-add">M+</button>
+                    <button data-action="memory-subtract">M-</button>
+                    <button data-action="memory-store">MS</button>
+
+                </div>
+
+
+                <!-- SCIENTIFIC FUNCTIONS -->
+                <div
+                    class="scientific-section"
+                    id="scientificSection">
+
+                    <div class="section-heading">
+
+                        <span>SCIENTIFIC FUNCTIONS</span>
+                        <span>ADVANCED MATH</span>
+
+                    </div>
+
+                    <div class="scientific-grid">
+
+                        <!-- TRIGONOMETRY -->
+                        <button data-action="function" data-value="sin">sin</button>
+                        <button data-action="function" data-value="cos">cos</button>
+                        <button data-action="function" data-value="tan">tan</button>
+                        <button data-action="function" data-value="log">log</button>
+                        <button data-action="function" data-value="ln">ln</button>
+
+                        <!-- INVERSE TRIGONOMETRY -->
+                        <button data-action="function" data-value="asin">sin⁻¹</button>
+                        <button data-action="function" data-value="acos">cos⁻¹</button>
+                        <button data-action="function" data-value="atan">tan⁻¹</button>
+                        <button data-action="function" data-value="sqrt">√</button>
+                        <button data-action="function" data-value="square">x²</button>
+
+                        <!-- CONSTANTS AND ADVANCED OPERATIONS -->
+                        <button data-action="constant" data-value="pi">π</button>
+                        <button data-action="constant" data-value="e">e</button>
+                        <button data-action="operator" data-value="^">xʸ</button>
+                        <button data-action="function" data-value="factorial">n!</button>
+                        <button data-action="function" data-value="abs">|x|</button>
+
+                        <!-- OTHER FUNCTIONS -->
+                        <button data-action="function" data-value="reciprocal">1/x</button>
+                        <button data-action="function" data-value="exp">exp</button>
+                        <button data-action="parenthesis" data-value="(">(</button>
+                        <button data-action="parenthesis" data-value=")">)</button>
+                        <button data-action="postfix" data-value="%">%</button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STANDARD KEYPAD -->
+                <div class="basic-section">
+
+                    <div class="section-heading">
+
+                        <span>STANDARD KEYPAD</span>
+                        <span>MAIN OPERATIONS</span>
+
+                    </div>
+
+                    <div class="basic-grid">
+
+                        <!-- FIRST ROW -->
+                        <button
+                            class="key clear-key"
+                            data-action="clear">
+                            AC
+                        </button>
+
+                        <button
+                            class="key utility-key"
+                            data-action="delete">
+                            DEL
+                        </button>
+
+                        <button
+                            class="key utility-key"
+                            data-action="postfix"
+                            data-value="%">
+                            %
+                        </button>
+
+                        <button
+                            class="key operator-key"
+                            data-action="operator"
+                            data-value="/">
+                            ÷
+                        </button>
+
+
+                        <!-- SECOND ROW -->
+                        <button class="key" data-action="number" data-value="7">7</button>
+                        <button class="key" data-action="number" data-value="8">8</button>
+                        <button class="key" data-action="number" data-value="9">9</button>
+
+                        <button
+                            class="key operator-key"
+                            data-action="operator"
+                            data-value="*">
+                            ×
+                        </button>
+
+
+                        <!-- THIRD ROW -->
+                        <button class="key" data-action="number" data-value="4">4</button>
+                        <button class="key" data-action="number" data-value="5">5</button>
+                        <button class="key" data-action="number" data-value="6">6</button>
+
+                        <button
+                            class="key operator-key"
+                            data-action="operator"
+                            data-value="-">
+                            −
+                        </button>
+
+
+                        <!-- FOURTH ROW -->
+                        <button class="key" data-action="number" data-value="1">1</button>
+                        <button class="key" data-action="number" data-value="2">2</button>
+                        <button class="key" data-action="number" data-value="3">3</button>
+
+                        <button
+                            class="key operator-key"
+                            data-action="operator"
+                            data-value="+">
+                            +
+                        </button>
+
+
+                        <!-- FIFTH ROW -->
+                        <button
+                            class="key utility-key"
+                            data-action="sign">
+                            +/−
+                        </button>
+
+                        <button
+                            class="key"
+                            data-action="number"
+                            data-value="0">
+                            0
+                        </button>
+
+                        <button
+                            class="key"
+                            data-action="decimal">
+                            .
+                        </button>
+
+                        <button
+                            class="key equals-key"
+                            data-action="calculate">
+                            =
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CALCULATOR FOOTER -->
+                <div class="calculator-footer">
+
+                    <span>Designed by MR JOHAN</span>
+
+                    <span>Precision meets simplicity</span>
+
+                </div>
+
+            </section>
+
+
+            <!-- HISTORY PANEL -->
+            <aside class="history-panel" id="historyPanel">
+
+                <div class="history-header">
+
+                    <div>
+                        <h2>Calculation History</h2>
+                        <p>Your recent calculations</p>
+                    </div>
+
+                    <button
+                        id="clearHistory"
+                        class="clear-history-btn">
+                        Clear all
+                    </button>
+
+                </div>
+
+
+                <!-- HISTORY ITEMS -->
+                <div class="history-list" id="historyList">
+
+                    <div class="empty-history">
+
+                        <span>◷</span>
+
+                        <p>No calculations yet</p>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </main>
+
+
+        <!-- PAGE FOOTER -->
+        <footer class="page-footer">
+
+            <p>© 2026 MR JOHAN Scientific Calculator.</p>
+
+            <p>Built with HTML, CSS and JavaScript.</p>
+
+        </footer>
+
+    </div>
+
+</body>
+</html>

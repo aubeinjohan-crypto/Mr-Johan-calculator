@@ -1,0 +1,1368 @@
+
+/* =========================================
+   MR JOHAN SCIENTIFIC CALCULATOR
+   Complete CSS Stylesheet
+   Dark Mode + Light Mode
+========================================= */
+
+
+/* =========================================
+   1. GOOGLE FONT & GLOBAL VARIABLES
+========================================= */
+
+:root {
+    --bg-primary: #080d18;
+    --bg-secondary: #101827;
+    --card-bg: rgba(20, 30, 48, 0.95);
+    --display-bg: #080f1d;
+
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --accent-soft: rgba(99, 102, 241, 0.15);
+
+    --operator-bg: #25334a;
+    --operator-text: #a5b4fc;
+
+    --button-bg: #192538;
+    --button-hover: #293a55;
+
+    --success: #22c55e;
+    --danger: #ef4444;
+
+    --border: rgba(148, 163, 184, 0.15);
+
+    --shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+
+    --radius-lg: 24px;
+    --radius-md: 14px;
+    --radius-sm: 10px;
+
+    --transition: 0.25s ease;
+}
+
+
+/* =========================================
+   2. LIGHT THEME
+========================================= */
+
+body.light-theme {
+
+    --bg-primary: #eef2ff;
+    --bg-secondary: #e0e7ff;
+    --card-bg: #ffffff;
+    --display-bg: #f8fafc;
+
+    --text-primary: #172033;
+    --text-secondary: #64748b;
+
+    --accent: #4f46e5;
+    --accent-hover: #4338ca;
+    --accent-soft: rgba(79, 70, 229, 0.10);
+
+    --operator-bg: #e0e7ff;
+    --operator-text: #4338ca;
+
+    --button-bg: #f1f5f9;
+    --button-hover: #e2e8f0;
+
+    --success: #16a34a;
+    --danger: #dc2626;
+
+    --border: rgba(71, 85, 105, 0.15);
+
+    --shadow: 0 25px 60px rgba(30, 41, 59, 0.12);
+
+}
+
+
+/* =========================================
+   3. RESET & GLOBAL STYLES
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    min-height: 100vh;
+
+    font-family: 'Inter', sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(99, 102, 241, 0.13),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(14, 165, 233, 0.10),
+            transparent 35%
+        ),
+        var(--bg-primary);
+
+    color: var(--text-primary);
+
+    transition:
+        background var(--transition),
+        color var(--transition);
+
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+input {
+    font-family: inherit;
+}
+
+
+/* =========================================
+   4. MAIN APP CONTAINER
+========================================= */
+
+.app-container {
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 25px 30px;
+
+}
+
+
+/* =========================================
+   5. HEADER
+========================================= */
+
+.header {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 35px;
+
+}
+
+.brand {
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+}
+
+.brand-icon {
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+    color: white;
+
+    font-size: 25px;
+    font-weight: 800;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 25px rgba(99, 102, 241, 0.3);
+
+}
+
+.brand-text h1 {
+
+    font-size: 19px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+}
+
+.brand-text p {
+
+    font-size: 10px;
+
+    color: var(--text-secondary);
+
+    letter-spacing: 2px;
+
+    margin-top: 4px;
+
+}
+
+.header-actions {
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+}
+
+.icon-btn {
+
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 12px;
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border);
+
+    color: var(--text-primary);
+
+    font-size: 22px;
+
+    transition: var(--transition);
+
+}
+
+.icon-btn:hover {
+
+    background: var(--accent);
+    color: white;
+
+    transform: translateY(-3px);
+
+}
+
+
+/* =========================================
+   6. MAIN CONTENT LAYOUT
+========================================= */
+
+.main-content {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 25px;
+
+}
+
+
+/* =========================================
+   7. CALCULATOR CARD
+========================================= */
+
+.calculator-card {
+
+    width: 100%;
+    max-width: 540px;
+
+    padding: 25px;
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow);
+
+    backdrop-filter: blur(20px);
+
+    transition: var(--transition);
+
+}
+
+
+/* =========================================
+   8. CALCULATOR TOP SECTION
+========================================= */
+
+.calculator-top {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 22px;
+
+}
+
+.calculator-label {
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+
+    color: var(--text-secondary);
+
+}
+
+.status-dot {
+
+    width: 8px;
+    height: 8px;
+
+    background: var(--success);
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 12px var(--success);
+
+}
+
+.calculator-options {
+
+    display: flex;
+    gap: 8px;
+
+}
+
+.small-btn {
+
+    min-width: 48px;
+
+    padding: 8px 12px;
+
+    border-radius: 8px;
+
+    background: var(--accent-soft);
+
+    color: var(--accent);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    transition: var(--transition);
+
+}
+
+.small-btn:hover,
+.small-btn.active {
+
+    background: var(--accent);
+    color: white;
+
+}
+
+
+/* =========================================
+   9. DISPLAY SCREEN
+========================================= */
+
+.display-container {
+
+    padding: 20px;
+
+    background: var(--display-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    margin-bottom: 18px;
+
+    overflow: hidden;
+
+}
+
+.previous-expression {
+
+    min-height: 22px;
+
+    text-align: right;
+
+    font-size: 13px;
+
+    color: var(--text-secondary);
+
+    margin-bottom: 12px;
+
+    overflow-wrap: anywhere;
+
+}
+
+.display-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.display {
+
+    width: 100%;
+    min-width: 0;
+
+    background: transparent;
+
+    border: none;
+    outline: none;
+
+    color: var(--text-primary);
+
+    font-size: clamp(28px, 5vw, 42px);
+
+    font-weight: 700;
+
+    text-align: right;
+
+    letter-spacing: -1px;
+
+}
+
+.display::placeholder {
+    color: var(--text-secondary);
+}
+
+.copy-btn {
+
+    width: 35px;
+    height: 35px;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background: var(--button-bg);
+
+    color: var(--text-secondary);
+
+    font-size: 19px;
+
+    transition: var(--transition);
+
+}
+
+.copy-btn:hover {
+
+    background: var(--accent);
+    color: white;
+
+}
+
+.display-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 15px;
+
+    font-size: 10px;
+
+    color: var(--text-secondary);
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* =========================================
+   10. MEMORY BUTTONS
+========================================= */
+
+.memory-buttons {
+
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 9px;
+
+    margin-bottom: 25px;
+
+}
+
+.memory-buttons button {
+
+    padding: 11px 5px;
+
+    background: transparent;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    transition: var(--transition);
+
+}
+
+.memory-buttons button:hover {
+
+    background: var(--accent-soft);
+
+    border-color: var(--accent);
+
+    color: var(--accent);
+
+}
+
+
+/* =========================================
+   11. SECTION HEADINGS
+========================================= */
+
+.section-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 13px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    color: var(--text-secondary);
+
+}
+
+
+/* =========================================
+   12. SCIENTIFIC FUNCTIONS
+========================================= */
+
+.scientific-section {
+
+    margin-bottom: 25px;
+
+    overflow: hidden;
+
+    transition: var(--transition);
+
+}
+
+.scientific-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 9px;
+
+}
+
+.scientific-grid button {
+
+    min-height: 43px;
+
+    padding: 8px 3px;
+
+    background: var(--accent-soft);
+
+    border: 1px solid transparent;
+
+    border-radius: 9px;
+
+    color: var(--accent);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition: var(--transition);
+
+}
+
+.scientific-grid button:hover {
+
+    background: var(--accent);
+
+    color: white;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(99, 102, 241, 0.2);
+
+}
+
+.scientific-grid button:active {
+    transform: scale(0.94);
+}
+
+
+/* =========================================
+   13. STANDARD KEYPAD
+========================================= */
+
+.basic-section {
+    margin-bottom: 20px;
+}
+
+.basic-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 10px;
+
+}
+
+.key {
+
+    min-height: 58px;
+
+    background: var(--button-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    color: var(--text-primary);
+
+    font-size: 19px;
+
+    font-weight: 600;
+
+    transition:
+        background var(--transition),
+        color var(--transition),
+        transform 0.15s ease,
+        box-shadow var(--transition);
+
+}
+
+.key:hover {
+
+    background: var(--button-hover);
+
+    transform: translateY(-2px);
+
+}
+
+.key:active {
+
+    transform: scale(0.94);
+
+}
+
+
+/* CLEAR BUTTON */
+
+.clear-key {
+
+    background: rgba(239, 68, 68, 0.12);
+
+    color: var(--danger);
+
+}
+
+.clear-key:hover {
+
+    background: var(--danger);
+
+    color: white;
+
+}
+
+
+/* DELETE AND UTILITY BUTTONS */
+
+.utility-key {
+
+    background: var(--operator-bg);
+
+    color: var(--operator-text);
+
+}
+
+.utility-key:hover {
+
+    background: var(--accent);
+
+    color: white;
+
+}
+
+
+/* MATHEMATICAL OPERATORS */
+
+.operator-key {
+
+    background: var(--operator-bg);
+
+    color: var(--operator-text);
+
+    font-size: 22px;
+
+}
+
+.operator-key:hover {
+
+    background: var(--accent);
+
+    color: white;
+
+}
+
+
+/* EQUALS BUTTON */
+
+.equals-key {
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+    color: white;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 6px 20px rgba(99, 102, 241, 0.25);
+
+}
+
+.equals-key:hover {
+
+    background: linear-gradient(
+        135deg,
+        #4f46e5,
+        #7c3aed
+    );
+
+    box-shadow:
+        0 8px 25px rgba(99, 102, 241, 0.4);
+
+}
+
+
+/* =========================================
+   14. CALCULATOR FOOTER
+========================================= */
+
+.calculator-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding-top: 17px;
+
+    border-top: 1px solid var(--border);
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    color: var(--text-secondary);
+
+    letter-spacing: 0.5px;
+
+}
+
+
+/* =========================================
+   15. HISTORY PANEL
+========================================= */
+
+.history-panel {
+
+    width: 100%;
+    max-width: 320px;
+
+    min-height: 300px;
+
+    padding: 22px;
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow);
+
+    display: none;
+
+    animation: slideIn 0.3s ease;
+
+}
+
+.history-panel.show {
+
+    display: block;
+
+}
+
+.history-header {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+
+}
+
+.history-header h2 {
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+}
+
+.history-header p {
+
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color: var(--text-secondary);
+
+}
+
+.clear-history-btn {
+
+    padding: 8px 10px;
+
+    background: rgba(239, 68, 68, 0.10);
+
+    color: var(--danger);
+
+    border-radius: 8px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    transition: var(--transition);
+
+}
+
+.clear-history-btn:hover {
+
+    background: var(--danger);
+
+    color: white;
+
+}
+
+
+/* HISTORY LIST */
+
+.history-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    max-height: 450px;
+
+    overflow-y: auto;
+
+}
+
+.history-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+
+    background: var(--accent);
+
+    border-radius: 10px;
+
+}
+
+
+/* EMPTY HISTORY */
+
+.empty-history {
+
+    min-height: 190px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--text-secondary);
+
+}
+
+.empty-history span {
+
+    font-size: 35px;
+
+    opacity: 0.5;
+
+}
+
+.empty-history p {
+
+    font-size: 12px;
+
+}
+
+
+/* INDIVIDUAL HISTORY ITEM */
+
+.history-item {
+
+    padding: 13px;
+
+    background: var(--button-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+
+    overflow-wrap: anywhere;
+
+}
+
+.history-item:hover {
+
+    border-color: var(--accent);
+
+    transform: translateX(3px);
+
+}
+
+.history-expression {
+
+    display: block;
+
+    font-size: 11px;
+
+    color: var(--text-secondary);
+
+    margin-bottom: 7px;
+
+}
+
+.history-result {
+
+    display: block;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    color: var(--text-primary);
+
+}
+
+
+/* =========================================
+   16. PAGE FOOTER
+========================================= */
+
+.page-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 35px;
+
+    padding: 15px 5px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================
+   17. ANIMATIONS
+========================================= */
+
+@keyframes slideIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateX(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateX(0);
+
+    }
+
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+.calculator-card {
+
+    animation: fadeIn 0.5s ease;
+
+}
+
+
+/* =========================================
+   18. SCIENTIFIC MODE COLLAPSED STATE
+========================================= */
+
+.scientific-section.collapsed .scientific-grid {
+
+    display: none;
+
+}
+
+.scientific-section.collapsed {
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =========================================
+   19. RESPONSIVE TABLET DESIGN
+========================================= */
+
+@media (max-width: 900px) {
+
+    .app-container {
+
+        max-width: 700px;
+
+        padding: 22px;
+
+    }
+
+    .main-content {
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+    .calculator-card {
+
+        max-width: 540px;
+
+    }
+
+    .history-panel {
+
+        max-width: 540px;
+
+    }
+
+    .history-panel.show {
+
+        display: block;
+
+    }
+
+}
+
+
+/* =========================================
+   20. RESPONSIVE MOBILE DESIGN
+========================================= */
+
+@media (max-width: 600px) {
+
+    .app-container {
+
+        padding: 15px;
+
+    }
+
+    .header {
+
+        margin-bottom: 23px;
+
+    }
+
+    .brand-icon {
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 21px;
+
+    }
+
+    .brand-text h1 {
+
+        font-size: 15px;
+
+    }
+
+    .brand-text p {
+
+        font-size: 8px;
+
+        letter-spacing: 1px;
+
+    }
+
+    .icon-btn {
+
+        width: 39px;
+        height: 39px;
+
+        font-size: 19px;
+
+    }
+
+    .calculator-card {
+
+        padding: 17px;
+
+        border-radius: 19px;
+
+    }
+
+    .display-container {
+
+        padding: 15px;
+
+    }
+
+    .display {
+
+        font-size: 30px;
+
+    }
+
+    .scientific-grid {
+
+        gap: 7px;
+
+    }
+
+    .scientific-grid button {
+
+        min-height: 42px;
+
+        font-size: 11px;
+
+    }
+
+    .basic-grid {
+
+        gap: 8px;
+
+    }
+
+    .key {
+
+        min-height: 54px;
+
+        font-size: 17px;
+
+    }
+
+    .memory-buttons {
+
+        gap: 6px;
+
+    }
+
+    .memory-buttons button {
+
+        font-size: 10px;
+
+        padding: 10px 3px;
+
+    }
+
+    .calculator-footer {
+
+        font-size: 8px;
+
+    }
+
+    .page-footer {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+
+        line-height: 1.6;
+
+        margin-top: 22px;
+
+    }
+
+    .history-panel {
+
+        padding: 17px;
+
+    }
+
+}
+
+
+/* =========================================
+   21. EXTRA SMALL MOBILE DEVICES
+========================================= */
+
+@media (max-width: 360px) {
+
+    .app-container {
+
+        padding: 9px;
+
+    }
+
+    .calculator-card {
+
+        padding: 12px;
+
+    }
+
+    .scientific-grid {
+
+        gap: 5px;
+
+    }
+
+    .scientific-grid button {
+
+        font-size: 10px;
+
+        min-height: 38px;
+
+    }
+
+    .basic-grid {
+
+        gap: 6px;
+
+    }
+
+    .key {
+
+        min-height: 48px;
+
+        font-size: 15px;
+
+    }
+
+    .display {
+
+        font-size: 25px;
+
+    }
+
+}
+
+
+/* =========================================
+   22. ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
+}
